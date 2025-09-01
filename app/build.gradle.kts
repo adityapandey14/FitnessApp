@@ -37,6 +37,18 @@ android {
     buildFeatures {
         compose = true
     }
+
+//    packaging {
+//        resources {
+//            noCompress = "tflite"
+//        }
+//    }
+
+    aaptOptions {
+        noCompress  += "tflite"
+        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+
 }
 
 dependencies {
@@ -56,4 +68,13 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation("org.tensorflow:tensorflow-lite:2.14.0")
+
+    implementation("org.tensorflow:tensorflow-lite-gpu:2.14.0")
+
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.3")
+
+    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.3")
+    implementation("org.tensorflow:tensorflow-lite-task-text:0.4.3")
 }
